@@ -104,17 +104,75 @@
 //9. Theory about versions of typescript
 //10.
 //FIFO in typescript
-class Queue {
-    constructor() {
-        this.data = [];
-    }
-    push(item) {
-        this.data.push(item);
-    }
-    pop() {
-        return this.data.shift();
-    }
-}
-const FIFO = new Queue();
-FIFO.push(12);
-FIFO.pop();
+// class Queue<T> {
+//   data = [];
+//   push(item: T) {
+//     this.data.push(item);
+//   }
+//   pop(): T {
+//     return this.data.shift();
+//   }
+// }
+// const FIFO = new Queue <number> ();
+// FIFO.push(12);
+// FIFO.pop();
+// class Queue<T> {
+//   data = [];
+//   push(item: T) {
+//     return this.data.push(item);
+//   }
+//   pop(): T {
+//     return this.data.shift();
+//   }
+// }
+// const newQueue = new Queue<number>();
+// newQueue.push(20)
+// newQueue.push(80)
+// newQueue.pop()
+//Any and Unknown in typescript
+//Both are the superset, can be assigned to any type(like boolean, string)
+//Any: Bypasses typechecks features of the typescript. Complete freedom
+//Unknown: Some freedom, but loose typechecking is done
+//11.
+// let exampleAny: any;
+// let exampleUnknown: unknown;
+// exampleAny = 123;
+// exampleAny = "Abx";
+// exampleAny = true;
+// exampleUnknown = 123;
+// exampleUnknown = "Abc";
+// exampleUnknown = false;
+// exampleAny.push.pop.shift.crush(123); //Anything you can do, no type checking in case of any
+// //exampleUnknown.push.pop() //Will give error, first we have check it's type. Unknown is more typesafe version of any
+// //Example
+// if (typeof exampleUnknown === "string") {
+//   exampleUnknown.trim();
+// }
+// if (typeof exampleUnknown === "boolean") {
+//   let exampleSetBoolean: boolean = exampleUnknown;
+// }
+// //Use of unknown is in (Migration)legacy code, to provide some typechecking, and not break the application & it provide internal type checks, as shown in the below example.
+// function log(value: unknown) {
+//   console.log(value.toFixed(2)); //Internal Type Error.
+// }
+// log(2);
+// log("Hello World"); //No type error in calling
+//Fixed
+// function log(value: undefined) {
+//   if (typeof value == "number") {
+//     console.log(value.toFixed(2));
+//   } else {
+//     console.log(value);
+//   }
+// }
+// log(2010.1221);
+// log("Hello World");
+//12. Frontend Frameworks
+//13.
+// let stringFunction = load();
+// const trimmer = (stringFunction as string).trim();
+// function load() {
+//   throw new Error("Function not implemented.");
+// }
+//14.
+// console.log(process.env.NEW_APP);
